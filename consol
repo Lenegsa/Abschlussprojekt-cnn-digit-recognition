@@ -1,0 +1,3 @@
+Make a new venv Python 3.10
+py -3.10 -m venv venv_py310
+

@@ -172,3 +172,12 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+#My env Python 3.10
+venv/
+venv_py310/
+venv_py310/Scripts/
+__pycache__/
+*.pyc
+.env
+*.h5
