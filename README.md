@@ -60,3 +60,41 @@ Epoch 6/6
 Test accuracy: 0.9900
 
 Try and test the modells (keras documantacion)
+Epoch 1/10
+788/788 ━━━━━━━━━━━━━━━━━━━━ 16s 19ms/step - accuracy: 0.3588 - loss: 1.7785 - val_accuracy: 0.9650 - val_loss: 0.1559
+Epoch 2/10
+788/788 ━━━━━━━━━━━━━━━━━━━━ 14s 18ms/step - accuracy: 0.8583 - loss: 0.4708 - val_accuracy: 0.9782 - val_loss: 0.1040
+Epoch 3/10
+788/788 ━━━━━━━━━━━━━━━━━━━━ 14s 18ms/step - accuracy: 0.9089 - loss: 0.3038 - val_accuracy: 0.9804 - val_loss: 0.1062
+Epoch 4/10
+788/788 ━━━━━━━━━━━━━━━━━━━━ 14s 18ms/step - accuracy: 0.9305 - loss: 0.2530 - val_accuracy: 0.9891 - val_loss: 0.0567
+Epoch 5/10
+788/788 ━━━━━━━━━━━━━━━━━━━━ 14s 18ms/step - accuracy: 0.9518 - loss: 0.1883 - val_accuracy: 0.9902 - val_loss: 0.0680
+Epoch 6/10
+788/788 ━━━━━━━━━━━━━━━━━━━━ 14s 18ms/step - accuracy: 0.9615 - loss: 0.1555 - val_accuracy: 0.9846 - val_loss: 0.1000
+Epoch 7/10
+788/788 ━━━━━━━━━━━━━━━━━━━━ 14s 18ms/step - accuracy: 0.9640 - loss: 0.1398 - val_accuracy: 0.9839 - val_loss: 0.0968
+Epoch 8/10
+788/788 ━━━━━━━━━━━━━━━━━━━━ 14s 18ms/step - accuracy: 0.9673 - loss: 0.1300 - val_accuracy: 0.9866 - val_loss: 0.0903
+Epoch 9/10
+788/788 ━━━━━━━━━━━━━━━━━━━━ 14s 18ms/step - accuracy: 0.9717 - loss: 0.1114 - val_accuracy: 0.9882 - val_loss: 0.1036
+Epoch 10/10
+788/788 ━━━━━━━━━━━━━━━━━━━━ 14s 18ms/step - accuracy: 0.9734 - loss: 0.1057 - val_accuracy: 0.9887 - val_loss: 0.0962
+438/438 ━━━━━━━━━━━━━━━━━━━━ 2s 4ms/step - accuracy: 0.9862 - loss: 0.0911
+Test accuracy: 0.9869
+
+salz 5
+Epoch 1/6
+788/788 ━━━━━━━━━━━━━━━━━━━━ 16s 19ms/step - accuracy: 0.5930 - loss: 1.1796 - val_accuracy: 0.9787 - val_loss: 0.0771
+Epoch 2/6
+788/788 ━━━━━━━━━━━━━━━━━━━━ 14s 18ms/step - accuracy: 0.9639 - loss: 0.1469 - val_accuracy: 0.9843 - val_loss: 0.0626
+Epoch 3/6
+788/788 ━━━━━━━━━━━━━━━━━━━━ 14s 17ms/step - accuracy: 0.9769 - loss: 0.0916 - val_accuracy: 0.9873 - val_loss: 0.0560
+Epoch 4/6
+788/788 ━━━━━━━━━━━━━━━━━━━━ 14s 18ms/step - accuracy: 0.9830 - loss: 0.0701 - val_accuracy: 0.9882 - val_loss: 0.0485
+Epoch 5/6
+788/788 ━━━━━━━━━━━━━━━━━━━━ 14s 18ms/step - accuracy: 0.9866 - loss: 0.0570 - val_accuracy: 0.9877 - val_loss: 0.0519
+Epoch 6/6
+788/788 ━━━━━━━━━━━━━━━━━━━━ 14s 18ms/step - accuracy: 0.9884 - loss: 0.0458 - val_accuracy: 0.9911 - val_loss: 0.0453
+438/438 ━━━━━━━━━━━━━━━━━━━━ 2s 4ms/step - accuracy: 0.9900 - loss: 0.0435
+Test accuracy: 0.9906
