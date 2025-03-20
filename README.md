@@ -28,7 +28,8 @@ I wrote and trained 2 CNN models.
 
 Marc 19
 I make a new modell, baceuse the label conversation.
-modell_2
+
+modell_2 no noise
 Epoch 1/6
 788/788 ━━━━━━━━━━━━━━━━━━━━ 11s 13ms/step - accuracy: 0.6394 - loss: 1.0543 - val_accuracy: 0.9780 - val_loss: 0.0856
 Epoch 2/6
@@ -43,7 +44,7 @@ Epoch 6/6
 788/788 ━━━━━━━━━━━━━━━━━━━━ 10s 12ms/step - accuracy: 0.9850 - loss: 0.0640 - val_accuracy: 0.9873 - val_loss: 0.0542
 438/438 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - accuracy: 0.9889 - loss: 0.0567
 
-Modell_noisy_2
+Modell_noisy_2 with salz
 Epoch 1/6
 788/788 ━━━━━━━━━━━━━━━━━━━━ 11s 13ms/step - accuracy: 0.6706 - loss: 0.9621 - val_accuracy: 0.9766 - val_loss: 0.0845
 Epoch 2/6
@@ -58,30 +59,6 @@ Epoch 6/6
 788/788 ━━━━━━━━━━━━━━━━━━━━ 10s 12ms/step - accuracy: 0.9910 - loss: 0.0381 - val_accuracy: 0.9912 - val_loss: 0.0421
 438/438 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - accuracy: 0.9883 - loss: 0.0486
 Test accuracy: 0.9900
-
-Try and test the modells (keras documantacion)
-Epoch 1/10
-788/788 ━━━━━━━━━━━━━━━━━━━━ 16s 19ms/step - accuracy: 0.3588 - loss: 1.7785 - val_accuracy: 0.9650 - val_loss: 0.1559
-Epoch 2/10
-788/788 ━━━━━━━━━━━━━━━━━━━━ 14s 18ms/step - accuracy: 0.8583 - loss: 0.4708 - val_accuracy: 0.9782 - val_loss: 0.1040
-Epoch 3/10
-788/788 ━━━━━━━━━━━━━━━━━━━━ 14s 18ms/step - accuracy: 0.9089 - loss: 0.3038 - val_accuracy: 0.9804 - val_loss: 0.1062
-Epoch 4/10
-788/788 ━━━━━━━━━━━━━━━━━━━━ 14s 18ms/step - accuracy: 0.9305 - loss: 0.2530 - val_accuracy: 0.9891 - val_loss: 0.0567
-Epoch 5/10
-788/788 ━━━━━━━━━━━━━━━━━━━━ 14s 18ms/step - accuracy: 0.9518 - loss: 0.1883 - val_accuracy: 0.9902 - val_loss: 0.0680
-Epoch 6/10
-788/788 ━━━━━━━━━━━━━━━━━━━━ 14s 18ms/step - accuracy: 0.9615 - loss: 0.1555 - val_accuracy: 0.9846 - val_loss: 0.1000
-Epoch 7/10
-788/788 ━━━━━━━━━━━━━━━━━━━━ 14s 18ms/step - accuracy: 0.9640 - loss: 0.1398 - val_accuracy: 0.9839 - val_loss: 0.0968
-Epoch 8/10
-788/788 ━━━━━━━━━━━━━━━━━━━━ 14s 18ms/step - accuracy: 0.9673 - loss: 0.1300 - val_accuracy: 0.9866 - val_loss: 0.0903
-Epoch 9/10
-788/788 ━━━━━━━━━━━━━━━━━━━━ 14s 18ms/step - accuracy: 0.9717 - loss: 0.1114 - val_accuracy: 0.9882 - val_loss: 0.1036
-Epoch 10/10
-788/788 ━━━━━━━━━━━━━━━━━━━━ 14s 18ms/step - accuracy: 0.9734 - loss: 0.1057 - val_accuracy: 0.9887 - val_loss: 0.0962
-438/438 ━━━━━━━━━━━━━━━━━━━━ 2s 4ms/step - accuracy: 0.9862 - loss: 0.0911
-Test accuracy: 0.9869
 
 salz 5
 Epoch 1/6
@@ -98,3 +75,21 @@ Epoch 6/6
 788/788 ━━━━━━━━━━━━━━━━━━━━ 14s 18ms/step - accuracy: 0.9884 - loss: 0.0458 - val_accuracy: 0.9911 - val_loss: 0.0453
 438/438 ━━━━━━━━━━━━━━━━━━━━ 2s 4ms/step - accuracy: 0.9900 - loss: 0.0435
 Test accuracy: 0.9906
+
+Try and test the modells (keras documantacion) 
+Now the slaz 5 ist the best now, but I have problem with the 9. Many models most of times look at it as a 7.
+Models learned with salt and pepper noise perform best.
+I modified the model, but it didn't get better, so I stayed with the original.
+It seems that the model will have to teach more 9 and 7 examples, to see if it will improve.
+But first I would like to do the canvas input so that I can collect new training data there
+Modells:
+-number_recognition_model                   The first modell with normal Mnits dataset (one-hot labels)
+-number_recognition_model_noisy             Trained with salz-pepper and dropout 0.4
+-number_recognition_model_2                 The first modell but just int labels (To have the same way of training)
+-number_recognition_model_noisy_2           The same model as the number_recognition_model_noisy, but better accuracy and learning curve
+-number_recognition_model_noisy_3           This modell trainde with gaussian noise (harder learning curve and worse performance on base dataset)
+-number_recognition_model_noisy_4           The same model as the number_recognition_model_noisy_3, but plus 1 fully connected hidden layer 180-64-32 (maybe this was better than 3)
+-number_recognition_model_noisy_5           This modell with slaz-pepper and dropout 0.5 (the best now)
+
+Marc 20
+Creating THML and Canvas Learning. When I'm done with this and I'm connected to the model. I'm going back to problem 9.
