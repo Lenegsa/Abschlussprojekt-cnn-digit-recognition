@@ -93,3 +93,8 @@ Modells:
 
 Marc 20
 Creating THML and Canvas Learning. When I'm done with this and I'm connected to the model. I'm going back to problem 9.
+I watched this tutorial video: https://www.youtube.com/watch?v=wCwKkT1P7vY&ab_channel=BananaCoding and w3schools
+I develop the frontend in WebStorm because I like it better.
+I'll copy it here later so Flask can handle it all.
+
+Marc 21
