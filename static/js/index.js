@@ -12,7 +12,7 @@ context.fillRect(0, 0, canvas.width, canvas.height); // fill the background
 
 
 let draw_color = "black";
-let draw_width = "20";
+let draw_width = "25";
 let is_drawing = false;
 
 //touch

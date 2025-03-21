@@ -1,18 +1,22 @@
 # Abschlussprojekt-cnn-digit-recognition
+Day 1
 Marc 12
 I've watched videos about neural networks.
 
+Day 2
 Marc 13
 I installed everything I need for the project. 
 I created the virtual environment and the data structure. You have to pay attention to version control, because not all versions support the other.
 I'm using older Python because of Tensorflow (Python 3.10)
 -requirements.txt
 
+Day 3
 Marc 14
 Getting to know the Mnist dataset and Classification. Representation, properties.
 Mnist documentacion and Aurélien Gérion: Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow
 notebooks -> mnist.ipynb (jupyter notebook)
 
+Day 4
 Marc 17
 I learned the convolutional neural network CNN basic. (Aurélien Gérion: Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow)
 -Convolutional Layer with Keras
@@ -21,11 +25,13 @@ I learned the convolutional neural network CNN basic. (Aurélien Gérion: Hands-
 -Basic CNN
 notebooks -> CNN.basic.ipyb
 
+Day 5
 Marc 18
 I wrote and trained 2 CNN models. 
 -number_recignition_model.h5 normal Mnist images + weights
 -number_recignition_model_noisy.h5 Salt_pepper noise Mnist images (wiew in mnist.ipynb) + weights
 
+Day 6
 Marc 19
 I make a new modell, baceuse the label conversation.
 
@@ -91,10 +97,29 @@ Modells:
 -number_recognition_model_noisy_4           The same model as the number_recognition_model_noisy_3, but plus 1 fully connected hidden layer 180-64-32 (maybe this was better than 3)
 -number_recognition_model_noisy_5           This modell with slaz-pepper and dropout 0.5 (the best now)
 
+Day 7
 Marc 20
 Creating THML and Canvas Learning. When I'm done with this and I'm connected to the model. I'm going back to problem 9.
 I watched this tutorial video: https://www.youtube.com/watch?v=wCwKkT1P7vY&ab_channel=BananaCoding and w3schools
 I develop the frontend in WebStorm because I like it better.
 I'll copy it here later so Flask can handle it all.
 
+Day 8
 Marc 21
+The canvas drawing surface is ready, but the whole page is not ready yet.
+In the beginning I had a little integrity problem in Falsak because of the Ninja2 template.
+template-> index.html static-> css/style.css js/index.js
+HTML: <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">, <script src="./static/js/index.js"></script>
+But this video helped:https://www.youtube.com/watch?v=OWaQWpVd95k&ab_channel=KrishNaik
+And Coursarea: IBM Developing AI Applications with Python and Flask
+Now I can run the Flask server.
+Next will be the logic for loading the model and connect to Flask.
+
+
+
+
+
+
+
+
+(later: https://www.geeksforgeeks.org/pass-javascript-variables-to-python-in-flask/)
