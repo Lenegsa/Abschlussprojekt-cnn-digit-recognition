@@ -57,10 +57,16 @@ function stop(event) {
     event.preventDefault();
 }
 
+const result = document.getElementById('result');
+const confidence = document.getElementById('confidence');
+
 function clear_canvas(){
     context.fillStyle = start_background_color;
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.fillRect(0, 0, canvas.width, canvas.height);
+    result.innerText = "-";
+    confidence.innerText = "-";
+
 }
 
 //communicate with server AJAX = Asynchronous JavaScript And XML.
@@ -81,8 +87,12 @@ function sendImage(){
 .then(data => {
     // Server response
     console.log('Prediction:', data.prediction);
+    console.log('Confidence values:', data.confidence);
+    
     //Show the result
-    document.getElementById('result').textContent = 'Predicted number: ' + data.prediction;
+    result.innerText = data.prediction;
+    confidence.innerText = `${data.confidence.toFixed(2)}%`;
+
 })
 .catch(error => {
     console.error('Error:', error);

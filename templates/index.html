@@ -7,14 +7,15 @@
   <title></title>
 </head>
 <body>
-<div>
+<div id="canvas-container">
  <canvas id="canvas"></canvas>
   <div class="buttons">
     <button type="button" class="button" onclick="sendImage()">Predict</button>
     <button onclick="clear_canvas()"  type="button" class="button">Clear</button>
   </div>
   <div class="buttons">
-    <p id ="result"></p>
+    <p>Result: <span id ="result">-</span></p>
+    <p>Confidence: <span id ="confidence">-</span></p>
   </div>
 </div>
 <script src="./static/js/index.js"></script>

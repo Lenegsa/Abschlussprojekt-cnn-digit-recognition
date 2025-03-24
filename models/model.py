@@ -38,5 +38,6 @@ def predict_digit(image):
     confidence = np.max(prediction[0]) * 100
     
     print(f"Predict: {predicted_digit}, Confidence: {confidence:.2f}%")
+    print(prediction[0])
     
-    return predicted_digit, prediction[0]
+    return predicted_digit, confidence

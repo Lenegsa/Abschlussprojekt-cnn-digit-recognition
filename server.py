@@ -6,7 +6,7 @@
 #Import Flask
 from flask import Flask
 from flask import Flask, render_template, request, jsonify
-from models.model import preprocess_image, predict_digit
+from models.model import predict_digit
 import base64
 import re
 from io import BytesIO
@@ -32,15 +32,15 @@ def img_route():
     
     # Pass the image to the prepocess image and predict image function and store the response
     response = predict_digit(image_to_preprocess)
-    digit = response[0]
     
-    return jsonify({'prediction': int(digit)})
+    return jsonify (prediction = int(response[0]), 
+                    confidence = float(response[1]))
     
-
 
 #host and run the server
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    #app.run(host="0.0.0.0", port=5000)
+    app.run(host="127.0.0.1", port=5000) #localhost
 
 
 #if __name__ == "__main__":

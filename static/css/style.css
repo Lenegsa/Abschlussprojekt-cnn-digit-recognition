@@ -4,3 +4,8 @@ canvas{
 body{
     background-color: grey;
 }
+
+#canvas-contaner{
+    display: flexbox;
+    justify-content: center;
+}

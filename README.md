@@ -119,3 +119,11 @@ Day 9
 Marc 24
 https://flask.palletsprojects.com/en/stable/patterns/javascript/
 https://www.geeksforgeeks.org/pass-javascript-variables-to-python-in-flask/
+
+I wrote the logic of the model together with the image preparation,, but the Flask server converts the received image data into a usable format BytesIO.
+I successfully connected the frontend and the backed part.
+After recognition, it will display the percentage and the recognized number.
+I used AJAX in JavaScript to send and receive data.
+I send the image and data in Json. 
+I need to convert the image to Base64 format to send it to the server.
+
