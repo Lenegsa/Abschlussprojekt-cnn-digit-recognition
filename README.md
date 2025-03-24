@@ -115,11 +115,7 @@ And Coursarea: IBM Developing AI Applications with Python and Flask
 Now I can run the Flask server.
 Next will be the logic for loading the model and connect to Flask.
 
-
-
-
-
-
-
-
-(later: https://www.geeksforgeeks.org/pass-javascript-variables-to-python-in-flask/)
+Day 9
+Marc 24
+https://flask.palletsprojects.com/en/stable/patterns/javascript/
+https://www.geeksforgeeks.org/pass-javascript-variables-to-python-in-flask/

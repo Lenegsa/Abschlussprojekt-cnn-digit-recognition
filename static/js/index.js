@@ -62,3 +62,30 @@ function clear_canvas(){
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.fillRect(0, 0, canvas.width, canvas.height);
 }
+
+//communicate with server AJAX = Asynchronous JavaScript And XML.
+
+function sendImage(){
+   const imageDataURL = canvas.toDataURL('image/png'); //base64 String
+
+   fetch('/predict', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+        image: imageDataURL
+    })
+})
+.then(response => response.json())
+.then(data => {
+    // Server response
+    console.log('Prediction:', data.prediction);
+    //Show the result
+    document.getElementById('result').textContent = 'Predicted number: ' + data.prediction;
+})
+.catch(error => {
+    console.error('Error:', error);
+});
+    
+}
