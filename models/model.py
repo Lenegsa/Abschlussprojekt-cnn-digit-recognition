@@ -8,10 +8,10 @@ from tensorflow.keras.models import load_model
 #model = load_model('number_recognition_model_noisy_5.h5')
 model = load_model('./models/number_recognition_model_noisy_5.h5')
 
-def preprocess_image(image_path):
+def preprocess_image(getImage):
     # Load image with PiL 
-    img = Image.open(image_path).convert('L')  # greyscale
-    
+    image = getImage
+    img = Image.open(image).convert('L')  # greyscale  
     # Resize 28*28
     img = img.resize((28, 28))
     
@@ -23,35 +23,20 @@ def preprocess_image(image_path):
     
     # Normalisation
     img_array = img_array / 255.0
-    
-    # Show this picture
-    plt.figure(figsize=(3, 3))
-    plt.imshow(img_array, cmap='gray')
-    plt.title("Picture to predict ")
-    plt.axis('off')
-    plt.show()
+
     
     # reshape to modell
     return img_array.reshape(1, 28, 28, 1)
 
-def predict_digit(image_path):
+def predict_digit(image):
     # Image Preprocessing
-    img = preprocess_image(image_path)
+    processedImg = preprocess_image(image)
     
     # predict
-    prediction = model.predict(img)
+    prediction = model.predict(processedImg )
     predicted_digit = np.argmax(prediction[0])
     confidence = np.max(prediction[0]) * 100
     
     print(f"Predict: {predicted_digit}, Confidence: {confidence:.2f}%")
-    
-    # Show Probability
-    plt.figure(figsize=(10, 4))
-    plt.bar(range(10), prediction[0])
-    plt.xticks(range(10))
-    plt.xlabel('Number')
-    plt.ylabel('Probability')
-    plt.title('Predicted number')
-    plt.show()
     
     return predicted_digit, prediction[0]

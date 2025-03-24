@@ -9,6 +9,7 @@ from flask import Flask, render_template, request, jsonify
 from models.model import preprocess_image, predict_digit
 import base64
 import re
+from io import BytesIO
 
 #create an instance of the Flask class
 app = Flask("Digit Recognition")
@@ -25,13 +26,13 @@ def img_route():
     image_data = data['image']
      # Base64 clean
     image_data = re.sub('^data:image/.+;base64,', '', image_data)
-    image_to_preprocess  = base64.b64decode(image_data)
+    image_bytes  = base64.b64decode(image_data)
+      # BytesIO obj
+    image_to_preprocess = BytesIO(image_bytes)
     
-    # Pass the image to the prepocess image function and store the response
-    image = preprocess_image(image_to_preprocess)
-    
-    respons = predict_digit
-    digit = respons[0]
+    # Pass the image to the prepocess image and predict image function and store the response
+    response = predict_digit(image_to_preprocess)
+    digit = response[0]
     
     return jsonify({'prediction': int(digit)})
     
