@@ -33,8 +33,11 @@ def img_route():
     # Pass the image to the prepocess image and predict image function and store the response
     response = predict_digit(image_to_preprocess)
     
+    
     return jsonify (prediction = int(response[0]), 
-                    confidence = float(response[1]))
+                    confidence = float(response[1]),
+                    visualisation = str(response[2]),
+                    greyscaleImage = str(response[3]))
     
 
 #host and run the server

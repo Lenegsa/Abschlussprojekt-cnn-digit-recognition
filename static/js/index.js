@@ -59,6 +59,8 @@ function stop(event) {
 
 const result = document.getElementById('result');
 const confidence = document.getElementById('confidence');
+const visImg = document.getElementById('visualization-img');
+const greyscaleImage = document.getElementById('greyscale-img');
 
 function clear_canvas(){
     context.fillStyle = start_background_color;
@@ -70,6 +72,8 @@ function clear_canvas(){
 }
 
 //communicate with server AJAX = Asynchronous JavaScript And XML.
+
+
 
 function sendImage(){
    const imageDataURL = canvas.toDataURL('image/png'); //base64 String
@@ -88,10 +92,22 @@ function sendImage(){
     // Server response
     console.log('Prediction:', data.prediction);
     console.log('Confidence values:', data.confidence);
+    console.log('ImageSrc:', data.visualisation )
+    console.log('GreySaleSrc:', data.greyscaleImage)
+
     
     //Show the result
     result.innerText = data.prediction;
     confidence.innerText = `${data.confidence.toFixed(2)}%`;
+
+    //visulaisation
+    //prediction image
+    visImg.innerHTML =
+    `<img src= ${data.visualisation} />`;
+
+    //predicted greyscale image
+    greyscaleImage.innerHTML =
+    `<img src= ${data.greyscaleImage} />`;
 
 })
 .catch(error => {
@@ -99,3 +115,4 @@ function sendImage(){
 });
     
 }
+

@@ -5,7 +5,14 @@ body{
     background-color: grey;
 }
 
-#canvas-contaner{
-    display: flexbox;
+div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     justify-content: center;
 }
+
+.datas{
+    flex-direction: column;
+}
+
