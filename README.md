@@ -1,6 +1,6 @@
 # Abschlussprojekt-cnn-digit-recognition
 Day 1
-Marc 12
+2025 Marc 12
 I've watched videos about neural networks.
 
 Day 2
@@ -126,4 +126,14 @@ After recognition, it will display the percentage and the recognized number.
 I used AJAX in JavaScript to send and receive data.
 I send the image and data in Json. 
 I need to convert the image to Base64 format to send it to the server.
+
+Day 10
+Marc 25
+
+https://sentry.io/answers/how-do-i-display-a-base64-image-in-html/
+https://www.geeksforgeeks.org/visualizing-representations-of-outputs-activations-of-each-cnn-layer/
+https://www.youtube.com/watch?v=5tW3y7lm7V0&t=5s&ab_channel=Anujshah
+https://www.youtube.com/watch?v=WJysB1RK2vM&ab_channel=CampusX
+https://github.com/ashishpatel26/Tools-to-Design-or-Visualize-Architecture-of-Neural-Network?tab=readme-ov-file
+https://pypi.org/project/visualkeras/
 

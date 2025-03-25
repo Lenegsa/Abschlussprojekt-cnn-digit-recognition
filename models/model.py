@@ -12,6 +12,7 @@ import base64
 model = load_model('./models/number_recognition_model_noisy_5.h5')
 
 def predict_digit(image):
+    
     # Image Preprocessing
     processed_result = preprocess_image(image)
     
