@@ -130,10 +130,14 @@ I need to convert the image to Base64 format to send it to the server.
 Day 10
 Marc 25
 
+I saved the color graph as an image (base64) and sent it to JavaScript with the subprocessed image to display it on the website.
+I started learning how to visualize CNN
 https://sentry.io/answers/how-do-i-display-a-base64-image-in-html/
 https://www.geeksforgeeks.org/visualizing-representations-of-outputs-activations-of-each-cnn-layer/
 https://www.youtube.com/watch?v=5tW3y7lm7V0&t=5s&ab_channel=Anujshah
 https://www.youtube.com/watch?v=WJysB1RK2vM&ab_channel=CampusX
-https://github.com/ashishpatel26/Tools-to-Design-or-Visualize-Architecture-of-Neural-Network?tab=readme-ov-file
 https://pypi.org/project/visualkeras/
+https://www.analyticsvidhya.com/blog/2020/11/tutorial-how-to-visualize-feature-maps-directly-from-cnn-layers/
 
+Day 11
+March 26

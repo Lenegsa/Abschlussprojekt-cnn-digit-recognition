@@ -30,7 +30,7 @@ def predict_digit(image):
     
     predictionImg = create_visualization(prediction[0])
    
-    
+    # predicted digit, confidence %, confidence graph img, pre processed img
     return predicted_digit, confidence, predictionImg, grayscale_image
 
 def preprocess_image(getImage):
@@ -69,7 +69,7 @@ def preprocess_image(getImage):
     # close plot
     plt.close(fig)
     
-    # reshape to modell
+    # reshape to modell and greyscale image
     return img_array.reshape(1, 28, 28, 1), grayscale_img_data
 
 
