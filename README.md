@@ -140,4 +140,34 @@ https://pypi.org/project/visualkeras/
 https://www.analyticsvidhya.com/blog/2020/11/tutorial-how-to-visualize-feature-maps-directly-from-cnn-layers/
 
 Day 11
-March 26
+Marc 26
+notebook-visulaizing
+I managed to visualize the structure of my CNN network with visulakeras.
+Most of the tutorial codes always gave me errors. I couldn't access input and output data in layers.
+Finally, I decided to ask for AI help from Claude 3.7. Then I asked Microsoft Copilot for more explanation.
+I learned that it is not possible to directly access the output and input values ​​of the layers of a trained Keras model.
+That's why I need another model, which is a copy of the original and after I canaccess its data as a layer to visualize.
+I was able to use this technique to represent feature maps.
+
+Then I experimented a bit to see what the model "saw".
+
+For example, in random lines it was certain that it was 2, but why?
+In the first max pooling pictures, it really looked like the 2.
+
+Full white image maybe 8?
+There was nothing on the first few layers, but parts of the 3rd conv layer were activated and it continued working with that.
+
+Full black image maybe 8? 
+Here the first layer has already been activated, especially at the edges.
+It's interesting that you can find data even in seemingly empty images.
+
+Finally I looked at number 8.
+The last conv layers actually look a bit similar to each other.
+
+I was so impressed by that visualization that I decided to display them on my website too and instead of my original calculator plan, I'm going in a different direction.
+I prefer to use the site to help people better understand how it works the CNN.
+
+My next plan is to integrate this functionality into the backend and connect it to the website.
+
+Day 12
+Marc 27

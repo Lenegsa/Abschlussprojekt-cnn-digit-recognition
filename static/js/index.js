@@ -61,6 +61,7 @@ const result = document.getElementById('result');
 const confidence = document.getElementById('confidence');
 const visImg = document.getElementById('visualization-img');
 const greyscaleImage = document.getElementById('greyscale-img');
+const visualizationFeaturemap = document.getElementById('visualization-featuremap');
 
 function clear_canvas(){
     context.fillStyle = start_background_color;
@@ -73,7 +74,7 @@ function clear_canvas(){
 
 //communicate with server AJAX = Asynchronous JavaScript And XML.
 
-
+const layers_images = [];
 
 function sendImage(){
    const imageDataURL = canvas.toDataURL('image/png'); //base64 String
@@ -92,10 +93,11 @@ function sendImage(){
     // Server response
     console.log('Prediction:', data.prediction);
     console.log('Confidence values:', data.confidence);
-    console.log('ImageSrc:', data.visualisation )
-    console.log('GreySaleSrc:', data.greyscaleImage)
+    console.log('ImageSrc:', data.visualisation );
+    console.log('GreySaleSrc:', data.greyscaleImage);
+    console.log(data.firstLayerConv2d);
 
-    
+
     //Show the result
     result.innerText = data.prediction;
     confidence.innerText = `${data.confidence.toFixed(2)}%`;
@@ -108,6 +110,18 @@ function sendImage(){
     //predicted greyscale image
     greyscaleImage.innerHTML =
     `<img src= ${data.greyscaleImage} />`;
+
+    //predicted greyscale image
+    visualizationFeaturemap.innerHTML =
+    `<img src= ${data.firstLayerConv2d} />
+     <img src= ${data.secondLayerMaxPool2d} />
+     <img src= ${data.thirdLayerConv2d} />
+     <img src= ${data.fourthLayerConv2d} />
+     <img src= ${data.fifthLayerMaxPool2d} />
+     <img src= ${data.sixthLayerConv2d} />
+     <img src= ${data.seventhLayerConv2d} />
+     <img src= ${data.eighthLayerMaxPool2d} />`
+    ;
 
 })
 .catch(error => {

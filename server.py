@@ -33,11 +33,22 @@ def img_route():
     # Pass the image to the prepocess image and predict image function and store the response
     response = predict_digit(image_to_preprocess)
     
+    #get layers_images array from response
+    layers_images = response[4]
+    print(len(layers_images))
     
     return jsonify (prediction = int(response[0]), 
                     confidence = float(response[1]),
                     visualisation = str(response[2]),
-                    greyscaleImage = str(response[3]))
+                    greyscaleImage = str(response[3]),
+                    firstLayerConv2d = str(layers_images[0]),
+                    secondLayerMaxPool2d = str(layers_images[1]),
+                    thirdLayerConv2d = str(layers_images[2]),
+                    fourthLayerConv2d = str(layers_images[3]),
+                    fifthLayerMaxPool2d = str(layers_images[4]),
+                    sixthLayerConv2d = str(layers_images[5]),
+                    seventhLayerConv2d = str(layers_images[6]),
+                    eighthLayerMaxPool2d = str(layers_images[7]))
     
 
 #host and run the server
