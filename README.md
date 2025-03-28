@@ -171,3 +171,7 @@ My next plan is to integrate this functionality into the backend and connect it 
 
 Day 12
 Marc 27
+I successfully implemented the display of feature folders for the website.
+However, I still have a little problem with image generation. At the bottom, a large white area remains.
+Generating feature maps takes a bit of a long time, so I get a slower response.
+I still need to solve this, then I will switch to CSS, JS, HTML development
