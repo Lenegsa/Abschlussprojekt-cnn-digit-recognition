@@ -175,3 +175,24 @@ I successfully implemented the display of feature folders for the website.
 However, I still have a little problem with image generation. At the bottom, a large white area remains.
 Generating feature maps takes a bit of a long time, so I get a slower response.
 I still need to solve this, then I will switch to CSS, JS, HTML development
+
+Day 13
+Marc 28
+I learned the Flask routes.
+
+
+Day 14
+April 2
+I've made the directories more organized and changed the paths.
+Today I'm learning error handling and testing.
+Flask:
+https://www.digitalocean.com/community/tutorials/how-to-handle-errors-in-a-flask-application
+https://flask.palletsprojects.com/en/stable/errorhandling/
+https://flask.palletsprojects.com/en/stable/logging/
+Python:
+https://www.geeksforgeeks.org/python-exception-handling/
+Unittest:
+https://docs.python.org/3/library/unittest.html
+
+I did the server error handling.
+I started model.py error handling.

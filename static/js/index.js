@@ -111,7 +111,7 @@ function sendImage(){
     greyscaleImage.innerHTML =
     `<img src= ${data.greyscaleImage} />`;
 
-    //predicted greyscale image
+     //greyscale images
     visualizationFeaturemap.innerHTML =
     `<img src= ${data.firstLayerConv2d} />
      <img src= ${data.secondLayerMaxPool2d} />
@@ -121,8 +121,8 @@ function sendImage(){
      <img src= ${data.sixthLayerConv2d} />
      <img src= ${data.seventhLayerConv2d} />
      <img src= ${data.eighthLayerMaxPool2d} />`
+   
     ;
-
 })
 .catch(error => {
     console.error('Error:', error);
