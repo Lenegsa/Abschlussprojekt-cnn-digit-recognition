@@ -6,7 +6,7 @@
 #Import Flask
 from flask import Flask
 from flask import Flask, render_template, request, jsonify, abort
-from digit_rocognition.model import predict_digit
+from digit_recognition.model import predict_digit
 import numpy as np
 import base64
 import re
@@ -35,7 +35,7 @@ def img_route():
         # Retrieve the img to preprocess
         data = request.get_json()
         
-        # Ellenőrizzük, hogy a szükséges adat megérkezett-e
+        # data is not null and image
         if not data or 'image' not in data:
             app.logger.error("Missing image data")
             return jsonify(error="Missing image data"), 400  # Bad Request

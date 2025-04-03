@@ -8,18 +8,9 @@ matplotlib.use('Agg')  #'Agg' no GUI
 import io
 import base64
 
-model = None
-layers_images = []
-
 # Load modell
-def load_CNN_model():
-    try:
-       model = load_model('./models/keras_models/number_recognition_model_noisy_5.h5')
-       return model
-    except Exception as e:
-        print("Failed to load model.")
-        raise
-           
+model = load_model('./models/keras_models/number_recognition_model_noisy_5.h5')   
+layers_images = []     
     
 """
 Get the image (BytesIO) from Flask server /predict
@@ -27,9 +18,7 @@ Predict the digit and give response to Flask server this is the (main) method
 Return  predicted digit, confidence %, confidence graph img, pre processed img
 """
 def predict_digit(image):
-    
-    load_CNN_model()
-    
+  
     try:
         # Image Preprocessing
         processed_result = preprocess_image(image)
@@ -54,17 +43,16 @@ def predict_digit(image):
         
         #fill this array with new images (layers_featuremaps)
         layer_visualization(processed_img)
-        
+       
     except Exception as e:
-        print("An error occurred while recognizing the number" , e)
-        raise
+      print("An error occurred while recognizing the number" , e)
     
     # predicted digit, confidence %, confidence graph img, pre processed img
     return predicted_digit, confidence, predictionImg, grayscale_image, layers_images
 
 
 """
-Get image from prdict_digit
+Get image from perdict_digit
 Preprocess the (BytesIO) image to tensor(predict) 
 Return reshape to modell(tensor) and greyscale image (base64)
 """
@@ -99,13 +87,13 @@ def preprocess_image(getImage):
     
     except OSError as e :
         print("Error loading image.", e)
-        raise
+        
     except ValueError as e :
         print(e)
-        raise
+        
     except Exception as e:
         print("An error occurred while preprocessing the image." , e)
-        raise
+        
     # reshape to modell and greyscale image
     return img_array.reshape(1, 28, 28, 1), grayscale_img_data
 
@@ -152,10 +140,9 @@ def create_visualization(predictions):
        plt.close(fig)
     except ValueError as e:
         print(e)
-        raise  
+        
     except Exception as e:
-        print(e)
-        raise
+        print("Error in create a graph with predictions numbers", e)
     
     return img_data
 
@@ -184,10 +171,10 @@ def save_to_base64(fig):
 
     except ValueError as e:
         print(e)
-        raise  
+        
     except Exception as e:
         print("Failed to encode image to base64", e)
-        raise
+        
     return f"data:image/png;base64,{img_base64}"
 
 
@@ -197,87 +184,104 @@ Make a new modell(copy) to access layers input and outputs data
 Call visualize_feature_maps
 """
 def layer_visualization(processed_image):
-    # Create an input layer
-    input_tensor = tf.keras.layers.Input(shape=(28, 28, 1))
+    try: 
+        if preprocess_image is None:
+            raise ValueError("No image to predict and visualization")
+        if model is None:
+            raise ValueError("No modell to image perdiction")
+        
+        # Create an input layer
+        input_tensor = tf.keras.layers.Input(shape=(28, 28, 1))
 
-    # Select a layer (e.g., the first convolutional layer)
-    layer_index = 0  # Change this index for different layers
+        # Select a layer (e.g., the first convolutional layer)
+        layer_index = 0  # Change this index for different layers
 
-    # Extract the layer
-    layer = model.layers[layer_index]
-    print(f"Layer name: {layer.name}, type: {type(layer).__name__}")
+        # Extract the layer
+        layer = model.layers[layer_index]
+        print(f"Layer name: {layer.name}, type: {type(layer).__name__}")
 
-    # Create a new model that works with the new input and the output of the selected layer
-    x = input_tensor
-    for i in range(layer_index + 1):
-      x = model.layers[i](x)
-    
-    one_layer_model = tf.keras.Model(inputs=input_tensor, outputs=x)
+        # Create a new model that works with the new input and the output of the selected layer
+        x = input_tensor
+        for i in range(layer_index + 1):
+            x = model.layers[i](x)
+        
+        one_layer_model = tf.keras.Model(inputs=input_tensor, outputs=x)
 
-    # Create a model from scratch for visualization
-    input_shape = (28, 28, 1)  # Typical MNIST size
-    inputs = tf.keras.layers.Input(shape=input_shape)
-    
-    # Add layers
-    x = inputs
-    outputs = []
+        # Create a model from scratch for visualization
+        input_shape = (28, 28, 1)  # Typical MNIST size
+        inputs = tf.keras.layers.Input(shape=input_shape)
+        
+        # Add layers
+        x = inputs
+        outputs = []
 
-    # Number of layers to visualize
-    num_layers_to_visualize = 8  # E.g., first 5 layers
+        # Number of layers to visualize
+        num_layers_to_visualize = 8  # E.g., first 5 layers
 
-    for i in range(min(num_layers_to_visualize, len(model.layers))): # max nummber of the modell layer
-        layer = model.layers[i] # get the modell i. layer
-        x = layer(x) # this layer get a inputs
-        outputs.append(x) #add to output list
+        for i in range(min(num_layers_to_visualize, len(model.layers))): # max nummber of the modell layer
+            layer = model.layers[i] # get the modell i. layer
+            x = layer(x) # this layer get a inputs
+            outputs.append(x) #add to output list
 
-    # Create the model
-    extended_model = tf.keras.Model(inputs=inputs, outputs=outputs)
+        # Create the model
+        extended_model = tf.keras.Model(inputs=inputs, outputs=outputs)
 
-    # Use with an actual image
-    more_feature_maps = extended_model.predict(processed_image)
+        # Use with an actual image
+        more_feature_maps = extended_model.predict(processed_image)
 
-    # Visualize the results
-    layer_names = [model.layers[i].name for i in range(min(num_layers_to_visualize, len(model.layers)))]
-    visualize_feature_maps(more_feature_maps, layer_names)
-    
+        # Visualize the results
+        layer_names = [model.layers[i].name for i in range(min(num_layers_to_visualize, len(model.layers)))]
+        visualize_feature_maps(more_feature_maps, layer_names)
+    except ValueError as e:
+        print(e)
+        
+    except Exception as e:
+        print("Error loading visual model", e)
+        
 
 """
 Layers Vilsualisation (feature maps)
 Make graphs with each layer feature maps and save all to layers_images = [] (base64 format)
 """
 def visualize_feature_maps(feature_maps, layer_names):
-    
-    for i, feature_map in enumerate(feature_maps):
-        print(f"Layer {i} ({layer_names[i]}) feature map shape: {feature_map.shape}")
+    try:
+        if feature_maps and layer_names is None:
+            raise ValueError("Missing input value for visualization")
         
-        #Only the feature maps of the first image are visualized (batch size = 1)
-        fmap = feature_map[0]
-        
-        #Define the display grid
-        n_features = fmap.shape[-1]  # Number of channels. fmap.shape activacion map dimension (height, width, num_channels)
-        grid_size = int(np.ceil(np.sqrt(n_features))) # We need a 2D grid. The square root of the number of channels (filters).  # This will give you the approximate side length of the grid. np.ceil(Round up if 32 cannel 5.66- 6)
-        
-        
-        # Create a grid to display feature maps (width, height)
-        fig = plt.figure(figsize=(15, 15))
-          
-        # Displays the first few feature maps (max 32 or as much as we request)
-        max_features = min(32, n_features)
-        for j in range(max_features):
-            plt.subplot(grid_size, grid_size, j+1)
+        for i, feature_map in enumerate(feature_maps):
+            print(f"Layer {i} ({layer_names[i]}) feature map shape: {feature_map.shape}")
             
-            # Normalize for better visualization
-            img = fmap[:, :, j] #get the featuremap datas (height, width, num_channels)
-            img = (img - img.min()) / (img.max() - img.min() + 1e-8)  # Avoid dividing by zero map values should be between 0 and 1
+            #Only the feature maps of the first image are visualized (batch size = 1)
+            fmap = feature_map[0]
             
-            plt.imshow(img, cmap='viridis')
-            plt.title(f'Feature {j+1}')
-            plt.axis('off')
-        
-        plt.suptitle(f"Feature Maps from Layer {layer_names[i]}", fontsize=16)
-        plt.tight_layout()
-       
-  
-        #save graphs to array  (base64) format
-        layers_images.append(save_to_base64(fig))
+            #Define the display grid
+            n_features = fmap.shape[-1]  # Number of channels. fmap.shape activacion map dimension (height, width, num_channels)
+            grid_size = int(np.ceil(np.sqrt(n_features))) # We need a 2D grid. The square root of the number of channels (filters).  # This will give you the approximate side length of the grid. np.ceil(Round up if 32 cannel 5.66- 6)
+            
+            
+            # Create a grid to display feature maps (width, height)
+            fig = plt.figure(figsize=(15, 15))
+            
+            # Displays the first few feature maps (max 32 or as much as we request)
+            max_features = min(32, n_features)
+            for j in range(max_features):
+                plt.subplot(grid_size, grid_size, j+1)
+                
+                # Normalize for better visualization
+                img = fmap[:, :, j] #get the featuremap datas (height, width, num_channels)
+                img = (img - img.min()) / (img.max() - img.min() + 1e-8)  # Avoid dividing by zero map values should be between 0 and 1
+                
+                plt.imshow(img, cmap='viridis')
+                plt.title(f'Feature {j+1}')
+                plt.axis('off')
+            
+            plt.suptitle(f"Feature Maps from Layer {layer_names[i]}", fontsize=16)
+            plt.tight_layout()
+            #save graphs to array  (base64) format
+            layers_images.append(save_to_base64(fig))
+            
+    except ValueError as e:
+        print(e)
+    except Exception as e:   
+        print("Error while visualizing feature maps", e)
     

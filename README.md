@@ -194,5 +194,11 @@ https://www.geeksforgeeks.org/python-exception-handling/
 Unittest:
 https://docs.python.org/3/library/unittest.html
 
-I did the server error handling.
-I started model.py error handling.
+I did the server error handling + log and started model.py error handling.
+
+Day 15
+April 3
+I wrote the error handling for model.py, but maybe I didn't handle everything separately.
+I drew the framework of the website.
+I've started to write the unittest for model.py, but I'm working on the website now.
+Later, when I have time, I'll come back to it.
