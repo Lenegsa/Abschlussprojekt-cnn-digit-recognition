@@ -2,23 +2,5 @@ canvas{
     border: 1px solid black;
 }
 body{
-    background-color: grey;
-}
-
-div{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-.datas{
-    flex-direction: column;
-}
-
-#visualization-featuremap{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    background-color: whitesmoke;
 }

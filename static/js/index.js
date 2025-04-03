@@ -29,16 +29,23 @@ canvas.addEventListener("mouseout", stop, false);
 
 function start(event) {
     is_drawing = true;
+
+    const rect = canvas.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
     context.beginPath();
-    context.moveTo(event.clientX - canvas.offsetLeft,
-        event.clientY - canvas.offsetTop);
+    context.moveTo(x, y);
     event.preventDefault();
 }
 
 function draw(event) {
     if(is_drawing) {
-        context.lineTo(event.clientX - canvas.offsetLeft,
-            event.clientY - canvas.offsetTop);
+        const rect = canvas.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+
+        context.lineTo(x, y);
         context.strokeStyle = draw_color;
         context.lineWidth = draw_width;
         context.lineCap = "round";
@@ -57,7 +64,7 @@ function stop(event) {
     event.preventDefault();
 }
 
-const result = document.getElementById('result');
+const predictedNumber = document.getElementById('predicted-number');
 const confidence = document.getElementById('confidence');
 const visImg = document.getElementById('visualization-img');
 const greyscaleImage = document.getElementById('greyscale-img');
@@ -67,9 +74,8 @@ function clear_canvas(){
     context.fillStyle = start_background_color;
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.fillRect(0, 0, canvas.width, canvas.height);
-    result.innerText = "-";
+    predictedNumber.innerText = "-";
     confidence.innerText = "-";
-
 }
 
 //communicate with server AJAX = Asynchronous JavaScript And XML.
@@ -99,28 +105,28 @@ function sendImage(){
 
 
     //Show the result
-    result.innerText = data.prediction;
-    confidence.innerText = `${data.confidence.toFixed(2)}%`;
+    predictedNumber.innerText = data.prediction;
+    confidence.innerText = `${data.confidence.toFixed(2)}`;
 
     //visulaisation
     //prediction image
     visImg.innerHTML =
-    `<img src= ${data.visualisation} />`;
+    `<img src= ${data.visualisation} class="img-fluid" alt="greyscaleImage" />`;
 
     //predicted greyscale image
     greyscaleImage.innerHTML =
-    `<img src= ${data.greyscaleImage} />`;
+    `<img src= ${data.greyscaleImage} class="img-fluid" alt="greyscaleImage" />`;
 
      //greyscale images
     visualizationFeaturemap.innerHTML =
-    `<img src= ${data.firstLayerConv2d} />
-     <img src= ${data.secondLayerMaxPool2d} />
-     <img src= ${data.thirdLayerConv2d} />
-     <img src= ${data.fourthLayerConv2d} />
-     <img src= ${data.fifthLayerMaxPool2d} />
-     <img src= ${data.sixthLayerConv2d} />
-     <img src= ${data.seventhLayerConv2d} />
-     <img src= ${data.eighthLayerMaxPool2d} />`
+    `<img src= ${data.firstLayerConv2d} class="img-fluid" alt="firstLayerConv2d" />
+     <img src= ${data.secondLayerMaxPool2d} class="img-fluid" alt="secondLayerMaxPool2d" />
+     <img src= ${data.thirdLayerConv2d} class="img-fluid" alt="thirdLayerConv2d" />
+     <img src= ${data.fourthLayerConv2d} class="img-fluid" alt="fourthLayerConv2d" />
+     <img src= ${data.fifthLayerMaxPool2d} class="img-fluid" fifthLayerMaxPool2d" />
+     <img src= ${data.sixthLayerConv2d} class="img-fluid" alt="sixthLayerConv2d" />
+     <img src= ${data.seventhLayerConv2d} class="img-fluid" alt="eventhLayerConv2d" />
+     <img src= ${data.eighthLayerMaxPool2d} class="img-fluid" alt="eighthLayerMaxPool2d" />`
    
     ;
 })
