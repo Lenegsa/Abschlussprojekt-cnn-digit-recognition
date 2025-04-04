@@ -203,3 +203,14 @@ I drew the framework of the website.
 I've started to write the unittest for model.py, but I'm working on the website now.
 Later, when I have time, I'll come back to it.
 I started to make the web-page.
+I had to modify the drawing logic of the canvas because of the positioning. He didn't notice when I drew.
+I still have problems with the path of the pictures.
+I use Bootstrap and my own css.
+I manipulate a few things in JavaSript exampe: canvas size
+
+Day 16
+April 4
+I've finally solved the problem of the path of the images.
+I wrote a waiting method. 
+While we wait for the server's response : wait cursor, diable buttons and waiting image and text.
+I made a confidence feedback emoji and text.

@@ -4,3 +4,7 @@ canvas{
 body{
     background-color: whitesmoke;
 }
+
+#confidence-emoji {
+    font-size: 10rem; 
+}

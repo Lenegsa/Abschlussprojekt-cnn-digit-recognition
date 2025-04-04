@@ -13,15 +13,15 @@
     <div class="container">
         <!-- Hero -->
         <div class="row mb-4">
-            <div class="col-12">
+            <div class="col-12 text-center">
                 <h1>Number Recognition CNN</h1>
-                <img src="{{ url_for('static', filename='img/hero_cut.jpeg')}}" class="img-fluid rounded mx-auto d-block"  alt="">
+                <img src="{{url_for('static', filename='images/hero.jpeg')}}" class="img-fluid rounded mx-auto d-block"  alt="hero image">
                 <p>Welcome! I'm a neural network that can recognize handwritten numbers. Test me!</p>
             </div>
         </div>
     
         <!-- Menü/ nav-->
-        <ul class="nav nav-tabs mb-4">
+        <ul class="nav nav-tabs nav-fill mb-4">
             <li class="nav-item"><a class="nav-link active" href="#recognition">Number recognition</a></li>
             <li class="nav-item"><a class="nav-link" href="#graph">Graph</a></li>
             <li class="nav-item"><a class="nav-link" href="#feature-maps">Feature Maps</a></li>
@@ -33,7 +33,10 @@
                 <div class="card">
                     <div class="card-body">
                         <h5>How sure am I?</h5>
-                        <div class="emoji-display" id="confidence-emoji">😊</div>
+                        <div class="emoji-display">
+                            <p id="confidence-emoji">😊</p> 
+                        </div>
+                        <p id="confidence-message">I'm waiting for your number....</p>
                     </div>
                 </div>
             </div>
@@ -92,7 +95,7 @@
         <div id="graph" class="row mb-4">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <h5>Probabilities</h5>
                         <div id="visualization-img"></div>
                         <!-- graph -->
@@ -105,7 +108,7 @@
         <div class="row mb-4">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <h5>This is how I work from the inside</h5>
                         <p>If you want to see a little inside my "head", here are pictures that show what I'm paying attention to
                             layer by layer, and how your drawn image transforms. Scroll down for details.</p>
@@ -118,10 +121,10 @@
         <div class="row mb-4">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <h5>The neural network model</h5>
                         <div id="cnn-image">
-                            <img src="{{ url_for('static', filename='CNN_layer.png')}}" class="img-fluid rounded mx-auto d-block" alt="">
+                            <img src="{{url_for('static', filename='images/CNN_layer.png')}}" class="img-fluid rounded mx-auto d-block" alt="CNN modell">
                         </div>
                     </div>
                 </div>
@@ -132,7 +135,7 @@
         <div id="feature-maps" class="row mb-4">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <h5>Feature Maps</h5>
                         <div id="visualization-featuremap">
                             <!-- feature maps -->
