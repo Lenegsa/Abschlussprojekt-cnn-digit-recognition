@@ -160,7 +160,7 @@ def save_to_base64(fig):
         
         # Save to BytesIO png
         img_buf = io.BytesIO()
-        plt.savefig(img_buf, format='png')
+        plt.savefig(img_buf, format='png',  bbox_inches='tight')
         img_buf.seek(0)
         
         # Convert to base64

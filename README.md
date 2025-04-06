@@ -214,3 +214,11 @@ I've finally solved the problem of the path of the images.
 I wrote a waiting method. 
 While we wait for the server's response : wait cursor, diable buttons and waiting image and text.
 I made a confidence feedback emoji and text.
+
+Day 17
+April 6 
+I wrote the text for the web site.
+I fixed the responsiveness of the page. 
+https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.savefig.html
+bbox_inches='tight' Remove blank space from images.
+So far I thought it should be changed when creating the images, but this code helped me save the image 
