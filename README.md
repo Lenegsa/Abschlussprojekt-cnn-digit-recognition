@@ -222,3 +222,12 @@ I fixed the responsiveness of the page.
 https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.savefig.html
 bbox_inches='tight' Remove blank space from images.
 So far I thought it should be changed when creating the images, but this code helped me save the image 
+
+Day 18
+April 7
+Add favicon. 
+https://flask.palletsprojects.com/en/stable/patterns/favicon/
+I used the link.
+Generated with:
+https://www.favicon.cc/?action=import_request
+A little ironically. The icon is 9 because it is the hardest to recognize.
