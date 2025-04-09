@@ -123,7 +123,7 @@ function showConfidenceEmoji(confidence, prediction){
     // chose a emoji
     if (confidence >= 95) {
         emojiElement.innerText = '😎'; 
-        confidenceMessage.innerText = "I'm sure it's this: : " + prediction;  
+        confidenceMessage.innerText = "I'm sure it's this: " + prediction;  
     } else if (confidence >= 80) {
         emojiElement.innerText = '😊'; 
         confidenceMessage.innerText = "I'm not sure, but maybe : " + prediction;
